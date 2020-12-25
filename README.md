@@ -10,5 +10,5 @@
 ## Generic Types (39:53)
 
 
-## Decorators
+## Decorators (1:15:10)
 ## Namespaces
