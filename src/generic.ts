@@ -105,3 +105,13 @@ function createVine(title: string, year: number): IVine {
 }
 
 console.log(createVine('Menlo', 1995));
+
+// -------------
+// Readonly
+// -------------
+const vine: Readonly<IVine> = {
+  title: "Risling",
+  year: 2000,
+};
+
+vine.year = 1990; // ошибка, так как Readonly запрещает изменение объекта данного типа
