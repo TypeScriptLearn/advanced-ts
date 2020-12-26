@@ -43,3 +43,18 @@ console.log(calculateLength('Hello world'));
 console.log(calculateLength(['apple']));
 console.log(calculateLength({ name: 'Gosha' })); // ошибка -> отсутствует обязательное поле length, как это указано в интерфейсе ILength
 console.log(calculateLength({ name: 'Gosha', age: 22, length: 180 })); // объект хз какой, но с точки зрения TS правильный, так как соответствует интерфейсу ILength -> присутствует обязательное поле length
+
+// ---------
+// ---
+const person = {
+  name: 'John',
+  age: 20
+}
+
+function getObjectValue<T extends object, R extends keyof T>(obj: T, key: R) {
+  return obj[key];
+}
+
+console.log(getObjectValue(person, 'name'));
+console.log(getObjectValue(person, 'age'));
+console.log(getObjectValue(person, "location")); // ошибка, так как в переданном объекте нет такого ключа
