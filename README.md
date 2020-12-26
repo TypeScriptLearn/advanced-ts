@@ -7,7 +7,7 @@
 - noEmitOnError
 
 
-## Generic Types (39:53)
+## Generic Types (40:35)
 
 
 ## Decorators (1:15:10)
