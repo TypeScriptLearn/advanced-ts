@@ -45,16 +45,42 @@ console.log(calculateLength({ name: 'Gosha' })); // ошибка -> отсутс
 console.log(calculateLength({ name: 'Gosha', age: 22, length: 180 })); // объект хз какой, но с точки зрения TS правильный, так как соответствует интерфейсу ILength -> присутствует обязательное поле length
 
 // ---------
-// ---
+// --- ???
 const person = {
   name: 'John',
   age: 20
 }
 
 function getObjectValue<T extends object, R extends keyof T>(obj: T, key: R) {
-  return obj[key];
+  return obj[key] ?? 'no such key in this object';
 }
 
 console.log(getObjectValue(person, 'name'));
 console.log(getObjectValue(person, 'age'));
 console.log(getObjectValue(person, "location")); // ошибка, так как в переданном объекте нет такого ключа
+
+// ------
+// Generics в классах
+class ItemsCollection<T extends string | number> {
+  constructor(private items: T[] = []) {}
+
+  get getItems(): T[] {
+    return [...this.items];
+  }
+
+  set addItem(item: string | number) {
+    this.items.push(<T>item);
+  }
+
+  removeItem(removedItem: T): void {
+    this.items = this.items.filter((item: T) => item !== removedItem);
+  }
+}
+
+const apples = new ItemsCollection(['apple', 'mango', 'kiwi']);
+apples.addItem = 'banana';
+console.log(apples.getItems);
+
+const bricks = new ItemsCollection<number>([10,20,30]);
+bricks.addItem = 40;
+console.log(bricks.getItems);
