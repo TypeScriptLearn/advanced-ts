@@ -27,7 +27,7 @@ const resultWrong = mergeObjects( 'sss', 'ffff' ); // wrong type
 console.log(resultCat);
 
 // --------
-// Generic с типизацией кастомнымными интерфейсами
+// Generic с типизацией кастомными интерфейсами
 interface ILength {
   length: number;
 }
@@ -61,6 +61,8 @@ console.log(getObjectValue(person, "location")); // ошибка, так как 
 
 // ------
 // Generics в классах
+type SN = string | number;
+
 class ItemsCollection<T extends string | number> {
   constructor(private items: T[] = []) {}
 
@@ -68,7 +70,7 @@ class ItemsCollection<T extends string | number> {
     return [...this.items];
   }
 
-  set addItem(item: string | number) {
+  set addItem(item: SN) {
     this.items.push(<T>item);
   }
 
