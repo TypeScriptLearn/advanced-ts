@@ -81,6 +81,27 @@ const apples = new ItemsCollection(['apple', 'mango', 'kiwi']);
 apples.addItem = 'banana';
 console.log(apples.getItems);
 
-const bricks = new ItemsCollection<number>([10,20,30]);
+const bricks = new ItemsCollection<number>([10, 20, 30]);
 bricks.addItem = 40;
 console.log(bricks.getItems);
+
+// -------
+// Partial
+// -------
+interface IVine {
+  title: string;
+  year: number;
+}
+
+function createVine(title: string, year: number): IVine {
+  const newVine: Partial<IVine> = {};
+  if (title.length > 3) {
+    newVine.title = title;
+  }
+  if (year <= 2015) {
+    newVine.year = year;
+  }
+  return <IVine>newVine;
+}
+
+console.log(createVine('Menlo', 1995));
