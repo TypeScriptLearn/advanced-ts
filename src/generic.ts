@@ -22,7 +22,7 @@ function mergeObjects<T extends object, R extends object>(primo: T, secondo: R):
 
 const resultCat = mergeObjects(catOne, catTwo);
 const resultAny = mergeObjects({ code: 12 }, { population: 100000 });
-const resultWrong = mergeObjects( 'sss', 'ffff' ); // wrong type
+// const resultWrong = mergeObjects( 'sss', 'ffff' ); // wrong type
 
 console.log(resultCat);
 
@@ -41,7 +41,7 @@ function calculateLength<T extends ILength>(value: T): { value: T, length: strin
 
 console.log(calculateLength('Hello world'));
 console.log(calculateLength(['apple']));
-console.log(calculateLength({ name: 'Gosha' })); // ошибка -> отсутствует обязательное поле length, как это указано в интерфейсе ILength
+// console.log(calculateLength({ name: 'Gosha' })); // ошибка -> отсутствует обязательное поле length, как это указано в интерфейсе ILength
 console.log(calculateLength({ name: 'Gosha', age: 22, length: 180 })); // объект хз какой, но с точки зрения TS правильный, так как соответствует интерфейсу ILength -> присутствует обязательное поле length
 
 // ---------
@@ -57,7 +57,7 @@ function getObjectValue<T extends object, R extends keyof T>(obj: T, key: R) {
 
 console.log(getObjectValue(person, 'name'));
 console.log(getObjectValue(person, 'age'));
-console.log(getObjectValue(person, "location")); // ошибка, так как в переданном объекте нет такого ключа
+// console.log(getObjectValue(person, "location")); // ошибка, так как в переданном объекте нет такого ключа
 
 // ------
 // Generics в классах
@@ -116,4 +116,4 @@ const vine: Readonly<IVine> = {
   year: 2000,
 };
 
-vine.year = 1990; // ошибка, так как Readonly запрещает изменение объекта данного типа
+// vine.year = 1990; // ошибка, так как Readonly запрещает изменение объекта данного типа
