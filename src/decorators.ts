@@ -1,22 +1,22 @@
 function AwesomeDecor(constructor: Function) {
-  console.log(constructor);
+  // console.log(constructor);
 }
 
-function AwesomeDecoratorProperty(target: any, property: string | Symbol) {
-  console.log(target);
+function AwesomeDecoratorProperty(target: object, property: string | symbol) {
+  console.log(target); // => 'name'
   console.log(property);
 }
 
-function AwesomeDecoratorMethod(target: any, property: string | Symbol, descriptor: PropertyDescriptor) {
-  console.log(target);
-  console.log(property);
-  console.log(descriptor);
+function AwesomeDecoratorMethod(target: object, property: string | symbol, descriptor: PropertyDescriptor) {
+  // console.log(target);
+  // console.log(property); // => 'name'
+  // console.log(descriptor);
 }
 
-function AwesomeDecoratorGetter(target: any, property: string | Symbol, descriptor: PropertyDescriptor) {
-  console.log(target);
-  console.log(property);
-  console.log(descriptor);
+function AwesomeDecoratorGetter(target: object, property: string | symbol, descriptor: PropertyDescriptor) {
+  // console.log(target);
+  // console.log(property);
+  // console.log(descriptor);
 }
 
 @AwesomeDecor
